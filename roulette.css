@@ -1,0 +1,250 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard-Regular';
+}
+
+
+body {
+    display: flex;
+    background:#333;
+    padding: 40px;
+    font-family: 'Pretendard-Regular';
+}
+
+.row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.col {
+    max-width: 340px;
+    max-height: 90vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.col-2 {
+    max-width: 680px;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 5%;
+    }
+
+    .col, .col-2 {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+}
+
+.col::-webkit-scrollbar {
+    width: 5px;
+}
+
+.col::-webkit-scrollbar-thumb {
+    background: #1f4aa0;
+    border-radius: 5px;
+}
+
+.col::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.js-code {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #222;
+    border-radius: 5px;
+    color: #eee;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.dev_note {
+    font-size: 12px;
+    color: #fff;
+}
+
+.dev_note h4 {
+    width: 100%;
+    text-align: left;
+}
+
+.dev_note ul li + li{
+    margin-top: 10px;
+}
+
+.roulette_container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: #111;
+    border-radius: 5px;
+}
+
+.roulette_screen {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.point {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10%;
+    z-index: 2;
+}
+
+.point img {
+    max-width: 100%;
+}
+
+.roulette_box {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    transition: 1s ease-out;
+}
+
+.roulette_box img {
+    max-width: 100%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    z-index: 2;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.center img {
+    max-width: 100%;
+}
+
+.center:hover {
+    filter: brightness(1.1);
+}
+
+.roulette_button_wrap {
+    display: flex;
+    justify-content: center;
+    padding: 0 5%;
+}
+
+.roulette_button_wrap button {
+    width: 100%;
+    height: 50px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.roulette_button_wrap button:hover {
+    background: #444;
+}
+
+.modal {
+    position: absolute;
+    z-index: 10;
+    background: #fff;
+    width: 240px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal.hide {
+    display: none;
+}
+
+.modal .result_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-size: 11px;
+}
+
+.modal .result_text .point_text {
+    color: #1f4aa0;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.modal button {
+    border: none;
+    background: #1f4aa0;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.fixedBtn {
+    padding: 10px 15px;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fixedBtn:hover {
+    background: #1f4aa0;
+    color: #fff;
+}

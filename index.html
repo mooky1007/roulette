@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="
+        width=device-width,
+        initial-scale=1.0,
+        minimum-scale=1.0,
+        maximum-scale=1.0,
+        user-scalable=no
+    ">
+    <title>Roulette</title>
+    <link rel="stylesheet" href="./roulette.css">
+    <script src="./roulette.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col">
+            <div class="roulette_container">
+                <div class="roulette_screen">
+                    <div class="point">
+                        <img src="./src/pointer.png" alt="roulette pointer">
+                    </div>
+                    <div class="roulette_box">
+                        <img src="./src/roulette.png" alt="roulette board">
+                    </div>
+                    <button class="center btn" type="button">
+                        <img src="./src/center.png" alt="roulette start button">
+                    </button>
+                </div>
+
+                <div class="modal hide">
+                    <div class="result_text">
+                        <span class="point_text">100p</span>
+                        <span class="prefix_text">에 당첨되셨습니다!</span>
+                    </div>
+                    <button type="button">확인</button>
+                </div>
+            </div>
+
+            <div class="btn_wrap">
+                <button type="button" class="fixedBtn" onclick="roulette.init()">초기화</button>
+                <button type="button" class="fixedBtn" onclick="roulette.start()">랜덤</button>
+                <button type="button" class="fixedBtn" onclick="roulette.start(0)">꽝</button>
+                <button type="button" class="fixedBtn" onclick="roulette.start(1)">500P</button>
+                <button type="button" class="fixedBtn" onclick="roulette.start(2)">100P</button>
+                <button type="button" class="fixedBtn" onclick="roulette.start(3)">200P</button>
+            </div>
+        </div>
+        <div class="col col-2">
+            <pre class="js-code">
+const roulette = new Roulette('.roulette_container', {
+    "duration": 3500,
+    "defaultSpin": 4,
+    "offset": 45,
+    "startPosition": 0,
+    "exceptResult": [1]
+},[
+    { name: '꽝!', range: [0, 90] },
+    { name: '500p', range: [90, 180] },
+    { name: '100p', range: [180, 270] },
+    { name: '200p', range: [270, 360] },
+]);
+</pre>
+        </div>
+        <div class="col dev_note">
+            <h4>Dev Note.</h4>
+            <ul>
+                <li>range기반 정답 범위 생성</li>
+                <li>duration : 전체 회전 시간</li>
+                <li>defaultSpin : 기본적으로 돌아가는 최소 바퀴 수</li>
+                <li>offset : 룰렛 이미지 핀이 안맞는 경우 밀어서 맞추는 용도로 사용(룰렛의 지름 계산 시 복잡도 감소)</li>
+                <li>startPosition : 원하는 시작 위치 설정</li>
+                <li>start(idx) : 인자 없으면 그냥 랜덤으로 룰렛 돌리기, result의 idx를 넣으면 해당 idx에서 멈추게</li>
+                <li>룰렛이 돌아가는중에는 start 버튼 눌러도 동작 안하게</li>
+                <li>다시 돌릴때는 룰렛 rotate값 0으로 초기화</li>
+                <li>점점 느리게 멈추게 하기</li>
+                <li>엔터, 스페이스바, ESC키로 화면 제어 가능하게</li>
+                <li>특정값으로 룰렛을 멈춰야 할때는, 정해진 위치가 아닌 해당 영역내에서 랜덤으로 멈추게</li>
+                <li>룰렛 이미지에 따른 위치조정용 offset 변수 추가</li>
+                <li>룰렛 초기 위치 값 startPosition 변수 추가</li>
+                <li>제외할 결과 exceptResult 배열 추가</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const roulette = new Roulette('.roulette_container', {
+            "duration": 3500,
+            "defaultSpin": 4,
+            "offset": 45,
+            "startPosition": 0,
+            "exceptResult": [1]
+        },[
+            { name: '꽝!', range: [0, 90] },
+            { name: '500p', range: [90, 180] },
+            { name: '100p', range: [180, 270] },
+            { name: '200p', range: [270, 360] },
+        ]);
+    </script>
+</body>
+</html>
