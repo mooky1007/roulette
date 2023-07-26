@@ -41,6 +41,7 @@ class Roulette {
 
     init() {
         const { roulette, startPosition } = this;
+        this.timer && clearTimeout(this.timer);
 
         roulette.style.cssText = `
             transition: none;
@@ -57,7 +58,7 @@ class Roulette {
         const { result, roulette, duration, defaultSpin, offset, exceptResult, getRangeRandom } = this;
         this.spin = true;
 
-        setTimeout(() => {
+        this.timer = setTimeout(() => {
             this.rotatePos = (fixedAmount !== undefined 
                 ? getRangeRandom(result[fixedAmount].range[0], result[fixedAmount].range[1])
                 : Math.floor(Math.random() * 360)
@@ -93,7 +94,7 @@ class Roulette {
         const { rotatePos, duration, result, offset } = this;
         const realPos = ((rotatePos % 360) + offset) % 360;
 
-        setTimeout(() => {
+        this.timer = setTimeout(() => {
             result.forEach(({name, range : [start, end]}) => {
                 if (start <= realPos && end >= realPos) {
                     this.renderModalText(name);
